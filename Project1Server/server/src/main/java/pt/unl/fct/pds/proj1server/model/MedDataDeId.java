@@ -3,7 +3,7 @@ package pt.unl.fct.pds.proj1server.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "med_data_DeId")
+@Table(name = "med_data_de_id")
 public class MedDataDeId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

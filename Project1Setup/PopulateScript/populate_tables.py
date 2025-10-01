@@ -17,7 +17,7 @@ def main():
     META_DATA.reflect(bind=engine)
     MED_TABLE = META_DATA.tables["med_data"]
     WORK_TABLE = META_DATA.tables["work_data"]
-    MED_TABLE_DEID = META_DATA.tables["med_deid_data"]
+    MED_TABLE_DEID = META_DATA.tables["med_data_de_id"]
 
     with open("./Data/med.csv", 'r') as med_file:
         med_csv = csv.reader(med_file)
