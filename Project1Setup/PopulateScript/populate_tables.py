@@ -18,6 +18,7 @@ def main():
     MED_TABLE = META_DATA.tables["med_data"]
     WORK_TABLE = META_DATA.tables["work_data"]
     MED_TABLE_DEID = META_DATA.tables["med_data_de_id"]
+    MED_TABLE_K = META_DATA.tables["med_data_k"]
 
     with open("./Data/med.csv", 'r') as med_file:
         med_csv = csv.reader(med_file)
@@ -34,6 +35,15 @@ def main():
 
         for line in med_csv:
             row = MED_TABLE_DEID.insert().values(id=line[0], age=line[2],
+                gender=line[5], postal_code=line[6], diagnosis=line[7])
+            CONN.execute(row)
+        CONN.commit()
+    
+    with open("./Data/med.csv", 'r') as med_file:
+        med_csv = csv.reader(med_file)
+
+        for line in med_csv:
+            row = MED_TABLE_K.insert().values(id=line[0], age=line[2],
                 gender=line[5], postal_code=line[6], diagnosis=line[7])
             CONN.execute(row)
         CONN.commit()

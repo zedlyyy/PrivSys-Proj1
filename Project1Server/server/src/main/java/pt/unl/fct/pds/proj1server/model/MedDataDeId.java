@@ -21,26 +21,54 @@ public class MedDataDeId {
     }
 
     public MedDataDeId(Long id,
-                    int age,
-                    String gender,
-                    String postalCode,
-                    String diagnosis) {
+            int age,
+            String gender,
+            String postalCode,
+            String diagnosis) {
         this.id = id;
         this.age = age;
         this.gender = gender;
         this.postalCode = postalCode;
         this.diagnosis = diagnosis;
     }
-    
-    public Long getId() {return id;}
-    public int getAge() {return age;}
-    public String getGender() {return gender;}
-    public String getPostalCode() {return postalCode;}
-    public String getDiagnosis() {return diagnosis;}
-    
-    public void setId(Long id) {this.id = id;}
-    public void setAge(int age) {this.age = age;}
-    public void setGender(String gender) {this.gender = gender;}
-    public void setPostalCode(String postalCode) {this.postalCode = postalCode;}
-    public void setDiagnosis(String Diagnosis) {this.diagnosis = diagnosis;}
+
+    public Long getId() {
+        return id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void setDiagnosis(String Diagnosis) {
+        this.diagnosis = diagnosis;
+    }
 }

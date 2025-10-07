@@ -29,22 +29,18 @@ public class LinkageAttack {
 		List<WorkData> workData = workDataRepository.findAll();
 		List<MedDataDeId> medData = medDeIdDataRepository.findAll();
 
-		//List<String> matches = new ArrayList<>();
+		List<String> matches = new ArrayList<>();
 
-		int matches = 0;
 		for (WorkData work : workData) {
 			for (MedDataDeId med : medData) {
-				if (work.isLinked(med)) {
-					matches++;
-					/* 
+				if (work.isLinked(med)) {				
 					String nameFull = work.getFName().concat(" ").concat(work.getLName());
 					if (!matches.contains(nameFull)) 
 						matches.add(nameFull);
-					*/
 				}
 			}
 		}
-        return matches;
+        return matches.size();
 	}
 
 }
