@@ -12,27 +12,35 @@ import pt.unl.fct.pds.proj1server.repository.WorkDataRepository;
 
 @Service
 public class LinkageAttack {
-
+	
     private final WorkDataRepository workDataRepository;
     private final MedDeIdDataRepository medDeIdDataRepository;
-
-    //Spring boot automaticamente injeta as intancias das bd's
+	
     public LinkageAttack (WorkDataRepository workDataRepository, MedDeIdDataRepository medDeIdDataRepository){
         this.workDataRepository     = workDataRepository;
         this.medDeIdDataRepository  = medDeIdDataRepository;
     }
 
-    public List<String> linkageAttack() {
+	public WorkDataRepository getWorkDataRepository() {
+		return workDataRepository;
+	}
+
+    public int linkageAttack() {
 		List<WorkData> workData = workDataRepository.findAll();
-		List<MedDataDeId> medDeIdData = medDeIdDataRepository.findAll();
+		List<MedDataDeId> medData = medDeIdDataRepository.findAll();
 
-		List<String> matches = new ArrayList<>();
+		//List<String> matches = new ArrayList<>();
 
+		int matches = 0;
 		for (WorkData work : workData) {
-			for (MedDataDeId med : medDeIdData) {
-				if (work.getGender().equals(med.getGender()) && work.getPostalCode().equals(med.getPostalCode())) {
+			for (MedDataDeId med : medData) {
+				if (work.isLinked(med)) {
+					matches++;
+					/* 
 					String nameFull = work.getFName().concat(" ").concat(work.getLName());
-					matches.add(nameFull);
+					if (!matches.contains(nameFull)) 
+						matches.add(nameFull);
+					*/
 				}
 			}
 		}

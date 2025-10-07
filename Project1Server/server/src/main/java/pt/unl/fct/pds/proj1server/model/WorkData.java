@@ -61,4 +61,8 @@ public class WorkData {
     public void setGender(String gender) {this.gender = gender;}
     public void setWorkplace(String workplace) {this.workplace = workplace;}
     public void setDepartment(String department) {this.department = department;}
+
+    public boolean isLinked(MedDataDeId other) {
+        return this.gender.equals(other.getGender()) && this.postalCode.equals(other.getPostalCode());
+    }
 }
