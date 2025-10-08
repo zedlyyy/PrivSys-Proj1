@@ -5,4 +5,4 @@ A spring boot based application used to implement some types of Data privacy tha
 - K-Anonymity
 - Differential Privacy
 
-Pedro Galego Nrº 72298 Diogo Nunes Nrº70502
+**Pedro Galego** Nrº 72298 **Diogo Nunes** Nrº70502
