@@ -1,4 +1,4 @@
-# PrivSys-Proj1
+# SysPriv-Proj1
 Project for Systems Privacy-2025 by **Pedro Galego** Nrº 72298 **Diogo Nunes** Nrº70502 
 
 # Contents
