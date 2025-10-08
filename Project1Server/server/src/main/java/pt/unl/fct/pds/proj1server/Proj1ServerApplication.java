@@ -19,6 +19,7 @@ public class Proj1ServerApplication {
 
 		//List<String> matches = linkageAttackFunction.linkageAttack();
 		int matches = linkageAttackFunction.linkageAttack();
+		mondrainAlgorithm.mondrainAlgorithmStart();
 
 		System.out.println("Linkage attack result: " + matches);
 	}
