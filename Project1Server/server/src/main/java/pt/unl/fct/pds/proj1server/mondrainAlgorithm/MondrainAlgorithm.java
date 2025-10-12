@@ -50,15 +50,18 @@ public class MondrainAlgorithm {
                 dataEntry.setPostalCode(Integer.toString(minPostalCode) + "-" + Integer.toString(maxPostalCode));
             }
 
-            return medDataKRecursive;
+            return medDataKRecursive;   
         }
         else {
+            //Break the partition in half
             List<MedDataK> leftSideMedDataK     = medDataKRecursive.subList(0, medDataKRecursive.size() / 2); 
             List<MedDataK> rightSideMedDataK    = medDataKRecursive.subList(medDataKRecursive.size() / 2, medDataKRecursive.size());
 
+            //call the Mondrain algorithm on the left and right half of the partition
             List<MedDataK> leftSideMedDataKResult   = mondrainAlgorithm(leftSideMedDataK);
             List<MedDataK> rightSideMedDataKResult  = mondrainAlgorithm(rightSideMedDataK);
 
+            //Return the Union of the result
             List<MedDataK> unionOfResults = new ArrayList<>(leftSideMedDataKResult);
             unionOfResults.addAll(rightSideMedDataKResult);
 
