@@ -34,6 +34,7 @@ public class MedDataController {
     @PostMapping("/count")
     public CountResponse getMedDataCount(@RequestBody CountRequest countRequest) {
         // TODO: Implement 
-        return new CountResponse(countRequest.getAttribute(), 0);
+        //return new CountResponse(countRequest.getAttribute(), 0);
+        return null;
     }
 }

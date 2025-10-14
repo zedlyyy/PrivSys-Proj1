@@ -1,6 +1,7 @@
 package pt.unl.fct.pds.proj1server.controller;
 
 import pt.unl.fct.pds.proj1server.model.WorkData;
+import pt.unl.fct.pds.proj1server.diferentialLogic.DiferentialResponse;
 import pt.unl.fct.pds.proj1server.model.CountRequest;
 import pt.unl.fct.pds.proj1server.model.CountResponse;
 import pt.unl.fct.pds.proj1server.repository.WorkDataRepository;
@@ -32,8 +33,10 @@ public class WorkDataController {
     }
 
     @PostMapping("/count")
-    public CountResponse getWorkDataCount(@RequestBody CountRequest countRequest ) {
-        // TODO: Implement 
-        return new CountResponse(countRequest.getAttribute(), 0);
+    public CountResponse getWorkDataCount(@RequestBody CountRequest countRequest) {
+        //DiferentialResponse response = new DiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medRep, workRep);
+        //return new CountResponse(countRequest.getAttribute(), response.getCount(), response.getSens(),
+                //response.getBudget());
+        return null;
     }
 }
