@@ -25,7 +25,7 @@ public class MedDiferentialResponse {
     public MedDiferentialResponse(String attribute, String value, MedDataRepository medRep) {
         this.sens = 1;
         this.budget = 0;
-        this.epsilon = laplaceConfig.getEpsilon();
+        this.epsilon = laplaceConfig.getLaplace();
         this.attribute = attribute;
         this.value = value;
 
@@ -76,7 +76,7 @@ public class MedDiferentialResponse {
     private double laplace() {
         double x = this.sens / this.epsilon;
         LaplaceDistribution laplace = new LaplaceDistribution(x, 0);
-        laplaceConfig.setEpsilon(laplaceConfig.getEpsilon() + CONFIDENTIALITY_LOSS);
+        laplaceConfig.setLaplace(laplaceConfig.getLaplace() + CONFIDENTIALITY_LOSS);
         return laplace.sample();
     }
 

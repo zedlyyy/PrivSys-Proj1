@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class Config {
     private double laplace;
 
-    public double getEpsilon(){
+    public double getLaplace(){
         return laplace;
     }
     
-    public void setEpsilon(double epsilon) {
+    public void setLaplace(double epsilon) {
         this.laplace = epsilon;
     }
 
