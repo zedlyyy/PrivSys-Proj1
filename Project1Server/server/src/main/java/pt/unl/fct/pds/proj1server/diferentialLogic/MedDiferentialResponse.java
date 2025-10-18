@@ -10,7 +10,7 @@ import pt.unl.fct.pds.proj1server.repository.MedDataRepository;
 public class MedDiferentialResponse {
 
     private int sens;
-    private int budget;
+    private double budget;
     private String attribute;
     private String value;
     private final double CONFIDENTIALITY_LOSS = 0.1; 
@@ -73,10 +73,15 @@ public class MedDiferentialResponse {
         return this.budget;
     }
 
+    public void setBudget(double budget) {
+        this.budget = budget;
+    }
+
     private double laplace() {
         double x = this.sens / this.epsilon;
         LaplaceDistribution laplace = new LaplaceDistribution(x, 0);
         laplaceConfig.setLaplace(laplaceConfig.getLaplace() + CONFIDENTIALITY_LOSS);
+        setBudget(laplaceConfig.getLaplace());
         return laplace.sample();
     }
 
