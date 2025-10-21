@@ -14,4 +14,5 @@ public interface MedDataRepository extends JpaRepository<MedData, Long> {
     long countByGender(String gender);
     long countByPostalCode(String postalCode);
     long countByDiagnosis(String diagnosis);
+    //double findTotalAge();
 }

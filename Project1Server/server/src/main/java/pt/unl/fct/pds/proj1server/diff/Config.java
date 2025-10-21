@@ -1,12 +1,15 @@
-package pt.unl.fct.pds.proj1server.diferentialLogic;
+package pt.unl.fct.pds.proj1server.diff;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @ConfigurationProperties(prefix = "e")
 public class Config {
     private double laplace;
+
+    public Config() {
+    }
 
     public double getLaplace(){
         return laplace;

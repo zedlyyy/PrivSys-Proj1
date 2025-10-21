@@ -1,0 +1,5 @@
+pt\unl\fct\systemsprivacy\lab2client\config\RestClientConfig.class
+pt\unl\fct\systemsprivacy\lab2client\GDPRClient.class
+pt\unl\fct\systemsprivacy\lab2client\service\ApiService.class
+pt\unl\fct\systemsprivacy\lab2client\model\CountResponse.class
+pt\unl\fct\systemsprivacy\lab2client\model\CountRequest.class

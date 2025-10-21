@@ -1,35 +1,34 @@
-package pt.unl.fct.pds.proj1server.diferentialLogic;
+package pt.unl.fct.pds.proj1server.diff;
 
 import org.apache.commons.math3.distribution.LaplaceDistribution;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
 import pt.unl.fct.pds.proj1server.repository.MedDataRepository;
 
-@Service
 public class MedDiferentialResponse {
 
     private int sens;
     private double budget;
     private String attribute;
     private String value;
-    private final double CONFIDENTIALITY_LOSS = 0.1; 
+    private final double CONFIDENTIALITY_LOSS = 0.1;
+    private double epsilon;
+    private final MedDataRepository medRep;
 
     @Autowired
     private Config laplaceConfig;
 
-    private final MedDataRepository medRep;
-
-    private double epsilon;
+    @PostConstruct
+    public void initLaplace() {
+        this.epsilon = laplaceConfig.getLaplace();
+    }
 
     public MedDiferentialResponse(String attribute, String value, MedDataRepository medRep) {
         this.sens = 1;
         this.budget = 0;
-        this.epsilon = laplaceConfig.getLaplace();
         this.attribute = attribute;
         this.value = value;
-
-
         this.medRep = medRep;
     }
 
@@ -41,7 +40,7 @@ public class MedDiferentialResponse {
                 countAttribute = medRep.countByName(value);
                 break;
             case "age":
-                int valueToInt = Integer.parseInt(attribute);
+                int valueToInt = Integer.parseInt(value);
                 countAttribute = medRep.countByAge(valueToInt);
                 break;
             case "address":
@@ -79,7 +78,7 @@ public class MedDiferentialResponse {
 
     private double laplace() {
         double x = this.sens / this.epsilon;
-        LaplaceDistribution laplace = new LaplaceDistribution(x, 0);
+        LaplaceDistribution laplace = new LaplaceDistribution(0, x);
         laplaceConfig.setLaplace(laplaceConfig.getLaplace() + CONFIDENTIALITY_LOSS);
         setBudget(laplaceConfig.getLaplace());
         return laplace.sample();

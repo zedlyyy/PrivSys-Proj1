@@ -1,7 +1,7 @@
 package pt.unl.fct.pds.proj1server.controller;
 
 import pt.unl.fct.pds.proj1server.model.MedData;
-import pt.unl.fct.pds.proj1server.diferentialLogic.MedDiferentialResponse;
+import pt.unl.fct.pds.proj1server.diff.MedDiferentialResponse;
 import pt.unl.fct.pds.proj1server.model.CountRequest;
 import pt.unl.fct.pds.proj1server.model.CountResponse;
 import pt.unl.fct.pds.proj1server.repository.MedDataRepository;

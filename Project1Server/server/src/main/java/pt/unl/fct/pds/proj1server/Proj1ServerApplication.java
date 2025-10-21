@@ -18,10 +18,12 @@ public class Proj1ServerApplication {
 		MondrainAlgorithm mondrainAlgorithm 	= context.getBean(MondrainAlgorithm.class);
 
 		//List<String> matches = linkageAttackFunction.linkageAttack();
+		/*
 		int matchesDeId = linkageAttackFunction.linkageAttackDeId();
 		mondrainAlgorithm.mondrainAlgorithmStart();
 		int matchesK = linkageAttackFunction.linkageAttackK();
 		System.out.println("Linkage attack result: " + matchesDeId);
 		System.out.println("Linkage attack result with k-anonymity: " + matchesK);
+		*/
 	}
 }
