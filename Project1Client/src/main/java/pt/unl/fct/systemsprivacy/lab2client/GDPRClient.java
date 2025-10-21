@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import pt.unl.fct.systemsprivacy.lab2client.model.CountRequest;
 import pt.unl.fct.systemsprivacy.lab2client.model.CountResponse;
 import pt.unl.fct.systemsprivacy.lab2client.service.ApiService;
-import org.springframework.web.client.HttpClientErrorException;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -58,7 +57,6 @@ public class GDPRClient implements CommandLineRunner
                     System.out.println("Please try again.");
                     break;
             }
-            cmd_in.close();
         }
     } 
 }

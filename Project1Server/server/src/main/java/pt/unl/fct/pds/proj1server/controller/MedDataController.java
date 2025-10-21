@@ -1,6 +1,7 @@
 package pt.unl.fct.pds.proj1server.controller;
 
 import pt.unl.fct.pds.proj1server.model.MedData;
+import pt.unl.fct.pds.proj1server.diff.Config;
 import pt.unl.fct.pds.proj1server.diff.MedDiferentialResponse;
 import pt.unl.fct.pds.proj1server.model.CountRequest;
 import pt.unl.fct.pds.proj1server.model.CountResponse;
@@ -19,6 +20,9 @@ public class MedDataController {
     @Autowired
     private MedDataRepository medDataRepository;
 
+    @Autowired
+    private Config laplaceConfig;
+
     @GetMapping
     public List<MedData> getAllMedDatas() {
         return medDataRepository.findAll();
@@ -33,7 +37,7 @@ public class MedDataController {
 
     @PostMapping("/count")
     public CountResponse getMedDataCount(@RequestBody CountRequest countRequest) {
-        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository);
+        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
         return new CountResponse(countRequest.getAttribute(), response.getCountPlusNoise(), response.getSens(), response.getBudget());
     }
 }

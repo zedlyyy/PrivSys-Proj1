@@ -16,20 +16,16 @@ public class MedDiferentialResponse {
     private double epsilon;
     private final MedDataRepository medRep;
 
-    @Autowired
     private Config laplaceConfig;
 
-    @PostConstruct
-    public void initLaplace() {
-        this.epsilon = laplaceConfig.getLaplace();
-    }
-
-    public MedDiferentialResponse(String attribute, String value, MedDataRepository medRep) {
+    public MedDiferentialResponse(String attribute, String value, MedDataRepository medRep, Config laplaceConfig) {
         this.sens = 1;
         this.budget = 0;
         this.attribute = attribute;
         this.value = value;
         this.medRep = medRep;
+
+        this.laplaceConfig = laplaceConfig;
     }
 
     private long getCount() {
