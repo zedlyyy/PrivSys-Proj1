@@ -13,7 +13,6 @@ public class MedDiferentialResponse {
     private String attribute;
     private String value;
     private final double CONFIDENTIALITY_LOSS = 0.1;
-    private double epsilon;
     private final MedDataRepository medRep;
 
     private Config laplaceConfig;
@@ -73,15 +72,15 @@ public class MedDiferentialResponse {
     }
 
     private double laplace() {
-        double x = this.sens / this.epsilon;
+        double x = this.sens / laplaceConfig.getLaplace();
         LaplaceDistribution laplace = new LaplaceDistribution(0, x);
         laplaceConfig.setLaplace(laplaceConfig.getLaplace() + CONFIDENTIALITY_LOSS);
         setBudget(laplaceConfig.getLaplace());
         return laplace.sample();
     }
 
-    public int getCountPlusNoise() {
-        return (int) (getCount() + laplace());
+    public double getCountPlusNoise() {
+        return getCount() + laplace();
     }
 
 }

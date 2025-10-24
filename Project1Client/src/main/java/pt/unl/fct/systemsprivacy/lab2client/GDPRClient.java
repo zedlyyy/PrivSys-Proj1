@@ -28,18 +28,23 @@ public class GDPRClient implements CommandLineRunner
     public void run(String... args) {
         Scanner cmd_in = new Scanner(System.in);
         while(true) {
-            System.out.println("Give the query");
+            System.out.println("Choose a query to execute:");
             System.out.println("1. Count");
             System.out.println("2. Average");
             System.out.println("3. Grouped count");
+            System.out.println("4. Exit");
+            System.out.print(">");
             int i = cmd_in.nextInt();
             cmd_in.nextLine();
+
             switch(i) {
                 case 1:
-                    System.out.print("What's the attribute?");
+                    System.out.print("What's the attribute?\n");
+                    System.out.print(">");
                     String attribute = cmd_in.nextLine();
 
-                    System.out.print("What's the value?");
+                    System.out.print("What's the value?\n");
+                    System.out.print(">");
                     String value = cmd_in.nextLine();
 
                     CountRequest request = new CountRequest(attribute, value);
@@ -53,6 +58,9 @@ public class GDPRClient implements CommandLineRunner
                     break;
                 case 3:
                     break;
+                case 4:
+                    System.out.println("Exiting ....");
+                    System.exit(0);
                 default:
                     System.out.println("Please try again.");
                     break;

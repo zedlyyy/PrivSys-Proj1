@@ -2,7 +2,7 @@ package pt.unl.fct.systemsprivacy.lab2client.model;
 
 public class CountResponse {
     private String attribute;
-    private int value;
+    private double value;
     private int sens;
     private double budget;
 
@@ -11,7 +11,7 @@ public class CountResponse {
 
     public CountResponse(
             String attribute,
-            int value, int sens, double budget) {
+            double value, int sens, double budget) {
         this.attribute = attribute;
         this.value = value;
         this.sens = sens;
@@ -22,7 +22,7 @@ public class CountResponse {
         return attribute;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
@@ -38,7 +38,7 @@ public class CountResponse {
         this.attribute = attribute;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
     }
 
