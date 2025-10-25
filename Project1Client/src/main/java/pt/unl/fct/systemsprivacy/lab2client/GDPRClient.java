@@ -51,7 +51,7 @@ public class GDPRClient implements CommandLineRunner
                     CountResponse response = apiService.postCountResponse(request);
                     System.out.println("Attribute: " + response.getAttribute());
                     System.out.println("Response: " + response.getValue());
-                    System.out.println("Sensitivity: " + response.getSens());
+                    System.out.println("Sensitivity: " + response.getCountSens());
                     System.out.println("Budget: " + response.getBudget());
                     break;
                 case 2:

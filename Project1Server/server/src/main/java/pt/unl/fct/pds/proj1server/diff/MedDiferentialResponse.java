@@ -8,7 +8,10 @@ import pt.unl.fct.pds.proj1server.repository.MedDataRepository;
 
 public class MedDiferentialResponse {
 
-    private int sens;
+    private static int AGE_SUM_SENS = 125;
+    private static int COUNT_SENS = 1;  
+    private int countSens;
+    private int sumSens;
     private double budget;
     private String attribute;
     private String value;
@@ -18,8 +21,9 @@ public class MedDiferentialResponse {
     private Config laplaceConfig;
 
     public MedDiferentialResponse(String attribute, String value, MedDataRepository medRep, Config laplaceConfig) {
-        this.sens = 1;
+        this.countSens = COUNT_SENS;
         this.budget = 0;
+        this.sumSens = AGE_SUM_SENS;
         this.attribute = attribute;
         this.value = value;
         this.medRep = medRep;
@@ -59,8 +63,16 @@ public class MedDiferentialResponse {
         return countAttribute;
     }
 
-    public int getSens() {
-        return this.sens;
+    private double getSumAge() {
+        return medRep.getTotalAge();
+    }
+
+    public int getCountSens() {
+        return this.countSens;
+    }
+
+    public int getSumSens() {
+        return this.sumSens;
     }
 
     public double getBudget() {
@@ -71,16 +83,27 @@ public class MedDiferentialResponse {
         this.budget = budget;
     }
 
-    private double laplace() {
-        double x = this.sens / laplaceConfig.getLaplace();
+    private double laplace(int sens) {
+        double x = sens / laplaceConfig.getLaplace();
         LaplaceDistribution laplace = new LaplaceDistribution(0, x);
         laplaceConfig.setLaplace(laplaceConfig.getLaplace() + CONFIDENTIALITY_LOSS);
         setBudget(laplaceConfig.getLaplace());
         return laplace.sample();
     }
 
-    public double getCountPlusNoise() {
-        return getCount() + laplace();
+    private double getSumPlusNoise() {
+        return getSumAge() + laplace(this.sumSens);
     }
+
+    public double getCountPlusNoise() {
+        return getCount() + laplace(this.countSens);
+    }
+
+    public double getAveragePlusNoise() {
+        return getSumPlusNoise() / getCountPlusNoise();
+    }
+    
+
+
 
 }

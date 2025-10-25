@@ -2,6 +2,7 @@ package pt.unl.fct.pds.proj1server.repository;
 
 import pt.unl.fct.pds.proj1server.model.MedData;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -14,5 +15,8 @@ public interface MedDataRepository extends JpaRepository<MedData, Long> {
     long countByGender(String gender);
     long countByPostalCode(String postalCode);
     long countByDiagnosis(String diagnosis);
-    //double findTotalAge();
+    
+    @Query("SELECT SUM(md.age) FROM MedData md")
+    Long getTotalAge();
+
 }

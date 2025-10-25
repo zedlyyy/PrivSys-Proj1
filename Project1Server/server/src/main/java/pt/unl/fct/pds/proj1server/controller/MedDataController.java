@@ -38,6 +38,12 @@ public class MedDataController {
     @PostMapping("/count")
     public CountResponse getMedDataCount(@RequestBody CountRequest countRequest) {
         MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
-        return new CountResponse(countRequest.getAttribute(), response.getCountPlusNoise(), response.getSens(), response.getBudget());
+        return new CountResponse(countRequest.getAttribute(), response.getCountPlusNoise(), response.getCountSens(), response.getBudget());
+    }
+
+    @PostMapping("/average")
+    public CountResponse getMedDataAverage(@RequestBody CountRequest countRequest) {
+        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
+        return new CountResponse(countRequest.getAttribute(), response.getCountPlusNoise(), response.getCountSens(), response.getSumSens(), response.getBudget());
     }
 }
