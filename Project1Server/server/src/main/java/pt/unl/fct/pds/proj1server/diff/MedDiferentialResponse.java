@@ -100,6 +100,19 @@ public class MedDiferentialResponse {
         return getSumAge() + laplace(this.sumSens);
     }
 
+    public double getAverageAgeGroupedDiagnosis() {
+
+        double ageCountPlusNoise = medRep.getTotalAgeDataPoints() + laplace(this.countSens);
+        double ageSumPlusNoise = medRep.getSumAgeByDiagnosis(this.value) + laplace(this.sumSens);
+
+        if (ageCountPlusNoise == 0 || ageSumPlusNoise == 0){
+            return 0.0;
+        }
+
+        return ageSumPlusNoise / ageCountPlusNoise;
+    }
+
+
     public double getCountPlusNoise() {
         return getCount() + laplace(this.countSens);
     }

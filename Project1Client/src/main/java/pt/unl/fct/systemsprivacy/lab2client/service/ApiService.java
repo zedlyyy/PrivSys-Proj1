@@ -145,4 +145,12 @@ public class ApiService {
                 .body(CountResponse.class);
     }
 
+    public CountResponse postAverageGroupedResponse(CountRequest req) {
+        return restClient.post()
+                .uri("/meddata/groupedDiagnosis")
+                .body(req)
+                .retrieve()
+                .body(CountResponse.class);
+    }
+
 }

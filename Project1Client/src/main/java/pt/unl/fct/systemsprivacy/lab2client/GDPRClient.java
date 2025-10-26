@@ -66,6 +66,7 @@ public class GDPRClient implements CommandLineRunner
                     System.out.println("Budget: " + response.getBudget());
                     break;
                 case 3:
+                    groupedResponse(cmd_in);
                     break;
                 case 4:
                     System.out.println("Exiting ....");
@@ -74,6 +75,35 @@ public class GDPRClient implements CommandLineRunner
                     System.out.println("Please try again.");
                     break;
             }
+        }
+    }
+
+    private void groupedResponse(Scanner cmd_in) {
+        System.out.println("Available grouped counts: \n");
+        System.out.println("1. Average age of a specific diagnosis.\n");
+
+        System.out.print("Please select one of the previus options.\n");
+        System.out.print(">");
+        String option = cmd_in.nextLine();
+        switch (option) {
+            case "1":
+
+                System.out.print("What's the value?\n");
+                System.out.print(">");
+                String value = cmd_in.nextLine();
+
+                CountRequest request = new CountRequest("diagnosis", value);
+                CountResponse response = apiService.postAverageGroupedResponse(request);
+
+                System.out.println("Attribute: " + response.getAttribute());
+                System.out.println("Response: " + response.getValue());
+                System.out.println("Count Sensitivity: " + response.getCountSens());
+                System.out.println("Sum Sensitivity: " + response.getSumSens());
+                System.out.println("Budget: " + response.getBudget());
+                
+                break;
+            default:
+                break;
         }
     } 
 }

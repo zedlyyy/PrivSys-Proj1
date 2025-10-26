@@ -46,4 +46,10 @@ public class MedDataController {
         MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
         return new CountResponse(countRequest.getAttribute(), response.getAveragePlusNoise(), response.getCountSens(), response.getSumSens(), response.getBudget());
     }
+
+    @PostMapping("/groupedDiagnosis")
+    public CountResponse getMedDataAverageGroupedDiagnosis(@RequestBody CountRequest countRequest) {
+        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
+        return new CountResponse(countRequest.getAttribute(), response.getAverageAgeGroupedDiagnosis(), response.getCountSens(), response.getSumSens(), response.getBudget());
+    }
 }
