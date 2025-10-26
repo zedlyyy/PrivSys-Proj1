@@ -44,6 +44,6 @@ public class MedDataController {
     @PostMapping("/average")
     public CountResponse getMedDataAverage(@RequestBody CountRequest countRequest) {
         MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
-        return new CountResponse(countRequest.getAttribute(), response.getCountPlusNoise(), response.getCountSens(), response.getSumSens(), response.getBudget());
+        return new CountResponse(countRequest.getAttribute(), response.getAveragePlusNoise(), response.getCountSens(), response.getSumSens(), response.getBudget());
     }
 }

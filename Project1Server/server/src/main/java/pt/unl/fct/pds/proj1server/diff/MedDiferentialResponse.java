@@ -10,6 +10,7 @@ public class MedDiferentialResponse {
 
     private static int AGE_SUM_SENS = 125;
     private static int COUNT_SENS = 1;  
+    private static int ALL_AGE_DATAPOINTS = 0;
     private int countSens;
     private int sumSens;
     private double budget;
@@ -33,6 +34,10 @@ public class MedDiferentialResponse {
 
     private long getCount() {
         long countAttribute = 0;
+
+        if(Integer.parseInt(value) == ALL_AGE_DATAPOINTS) {
+            return medRep.getTotalAgeDataPoints();
+        }
 
         switch (attribute) {
             case "name":

@@ -137,4 +137,12 @@ public class ApiService {
                 .body(CountResponse.class);
     }
 
+    public CountResponse postAverageResponse(CountRequest req) {
+        return restClient.post()
+                .uri("/meddata/average")
+                .body(req)
+                .retrieve()
+                .body(CountResponse.class);
+    }
+
 }

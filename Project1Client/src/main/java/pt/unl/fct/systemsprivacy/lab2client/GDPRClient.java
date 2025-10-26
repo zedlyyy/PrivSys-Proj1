@@ -14,6 +14,7 @@ public class GDPRClient implements CommandLineRunner
 {
 
     private final ApiService apiService;
+    private final String ALL_AGE_DATAPOINTS = "0";
 
     public GDPRClient(ApiService apiService) {
         this.apiService = apiService;
@@ -55,6 +56,14 @@ public class GDPRClient implements CommandLineRunner
                     System.out.println("Budget: " + response.getBudget());
                     break;
                 case 2:
+                    System.out.print("Average of the ages:\n");
+                    request = new CountRequest("age", ALL_AGE_DATAPOINTS);
+                    response = apiService.postAverageResponse(request);
+                    System.out.println("Attribute: " + response.getAttribute());
+                    System.out.println("Response: " + response.getValue());
+                    System.out.println("Count Sensitivity: " + response.getCountSens());
+                    System.out.println("Sum Sensitivity: " + response.getSumSens());
+                    System.out.println("Budget: " + response.getBudget());
                     break;
                 case 3:
                     break;

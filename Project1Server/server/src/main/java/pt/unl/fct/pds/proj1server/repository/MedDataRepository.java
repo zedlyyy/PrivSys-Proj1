@@ -15,6 +15,9 @@ public interface MedDataRepository extends JpaRepository<MedData, Long> {
     long countByGender(String gender);
     long countByPostalCode(String postalCode);
     long countByDiagnosis(String diagnosis);
+
+    @Query("SELECT COUNT(md.age) FROM MedData md WHERE md.age IS NOT NULL")
+    int getTotalAgeDataPoints();
     
     @Query("SELECT SUM(md.age) FROM MedData md")
     Long getTotalAge();
