@@ -82,13 +82,13 @@ public class GDPRClient implements CommandLineRunner
         System.out.println("Available grouped counts: \n");
         System.out.println("1. Average age of a specific diagnosis.\n");
 
-        System.out.print("Please select one of the previus options.\n");
+        System.out.print("Please select one of the previous options.\n");
         System.out.print(">");
         String option = cmd_in.nextLine();
         switch (option) {
             case "1":
 
-                System.out.print("What's the value?\n");
+                System.out.print("What's the diagnosis code?\n");
                 System.out.print(">");
                 String value = cmd_in.nextLine();
 
@@ -105,6 +105,7 @@ public class GDPRClient implements CommandLineRunner
             default:
                 break;
         }
-    } 
+    }
+
 }
 

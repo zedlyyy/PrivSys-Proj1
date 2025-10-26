@@ -16,7 +16,7 @@ public class MedDiferentialResponse {
     private double budget;
     private String attribute;
     private String value;
-    private final double CONFIDENTIALITY_LOSS = 0.1;
+    private final double CONFIDENTIALITY_LOSS = 0.05;
     private final MedDataRepository medRep;
 
     private Config laplaceConfig;

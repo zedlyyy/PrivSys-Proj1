@@ -37,19 +37,50 @@ public class MedDataController {
 
     @PostMapping("/count")
     public CountResponse getMedDataCount(@RequestBody CountRequest countRequest) {
-        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
-        return new CountResponse(countRequest.getAttribute(), response.getCountPlusNoise(), response.getCountSens(), response.getBudget());
+
+        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), 
+        countRequest.getValue(), 
+        medDataRepository, 
+        laplaceConfig);
+
+        return new CountResponse(countRequest.getAttribute(), 
+        response.getCountPlusNoise(), 
+        response.getCountSens(), 
+        response.getBudget());        
     }
 
     @PostMapping("/average")
     public CountResponse getMedDataAverage(@RequestBody CountRequest countRequest) {
-        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
-        return new CountResponse(countRequest.getAttribute(), response.getAveragePlusNoise(), response.getCountSens(), response.getSumSens(), response.getBudget());
+
+        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), 
+        countRequest.getValue(), 
+        medDataRepository, 
+        laplaceConfig);
+
+        return new CountResponse(countRequest.getAttribute(), 
+            response.getAveragePlusNoise(), 
+            response.getCountSens(), 
+            response.getSumSens(), 
+            response.getBudget());
     }
 
     @PostMapping("/groupedDiagnosis")
     public CountResponse getMedDataAverageGroupedDiagnosis(@RequestBody CountRequest countRequest) {
-        MedDiferentialResponse response = new MedDiferentialResponse(countRequest.getAttribute(), countRequest.getValue(), medDataRepository, laplaceConfig);
-        return new CountResponse(countRequest.getAttribute(), response.getAverageAgeGroupedDiagnosis(), response.getCountSens(), response.getSumSens(), response.getBudget());
+
+        MedDiferentialResponse response = new MedDiferentialResponse(
+            countRequest.getAttribute(),
+            countRequest.getValue(),
+            medDataRepository,
+            laplaceConfig);
+
+        if(response.getBudget() >= laplaceConfig.getMaxBudget()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Privacy buget totally used!");
+        }
+
+        return new CountResponse(countRequest.getAttribute(),
+            response.getAverageAgeGroupedDiagnosis(),
+            response.getCountSens(),
+            response.getSumSens(), 
+            response.getBudget());
     }
 }

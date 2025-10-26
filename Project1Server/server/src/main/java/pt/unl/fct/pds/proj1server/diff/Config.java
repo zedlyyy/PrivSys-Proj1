@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @ConfigurationProperties(prefix = "e")
 public class Config {
     private double laplace;
+    private double maxBudget;
 
     public Config() {
     }
@@ -17,6 +18,14 @@ public class Config {
     
     public void setLaplace(double epsilon) {
         this.laplace = epsilon;
+    }
+
+    public double getMaxBudget() {
+        return maxBudget;
+    }
+
+    public void setMaxBudget(double maxBudget) {
+        this.maxBudget = maxBudget;
     }
 
 }
